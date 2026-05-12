@@ -102,9 +102,16 @@
         .group-card {
             background: #F0F4F8; border-radius: 6px; padding: 4px;
             border: 1px solid #ddd; text-align: center;
+            cursor: pointer; transition: transform 0.1s, border-color 0.1s;
         }
+        .group-card:active { transform: scale(0.95); }
+        .group-card.highlight { border-color: #4A90D9; background: #E8F4FD; }
         .group-card .group-label { font-size: 10px; color: #7F8C8D; margin-bottom: 2px; }
         .group-card .blocks-row { justify-content: center; }
+        .group-card .move-group-btn {
+            font-size: 10px; color: #4A90D9; font-weight: 600; margin-top: 3px;
+            cursor: pointer;
+        }
         .block-ten {
             width: 36px; height: 36px; background: #4A90D9; border-radius: 5px;
             display: inline-flex; align-items: center; justify-content: center;
@@ -389,8 +396,9 @@
         if (userAnswer === correctAnswer) {
             score++;
             document.getElementById('score-display').textContent = `Score: ${score}`;
-            showFeedback(ENCOURAGEMENTS[randInt(0, ENCOURAGEMENTS.length - 1)], true);
-            triggerConfetti();
+            const phrase = ENCOURAGEMENTS[randInt(0, ENCOURAGEMENTS.length - 1)];
+            showFeedback(phrase, true);
+            triggerConfetti(phrase);
             setTimeout(() => generateProblem(), 2500);
         } else {
             showFeedback(GENTLE_FEEDBACK[randInt(0, GENTLE_FEEDBACK.length - 1)], false);
@@ -512,14 +520,14 @@
             let t1 = Math.floor(num1/10), u1 = num1%10;
             let t2 = Math.floor(num2/10), u2 = num2%10;
 
-            html += `<div class="vis-section"><div class="vis-label">First: ${num1}</div><div class="blocks-row">`;
+            html += `<div class="vis-section" onclick="moveGroupToWorkspace(this, ${t1}, ${u1})" style="cursor:pointer;"><div class="vis-label">First: ${num1} <span style="color:#4A90D9; font-size:11px;">(tap to move)</span></div><div class="blocks-row">`;
             for (let i = 0; i < t1; i++) html += '<div class="block-ten draggable" draggable="true" data-type="ten">10</div>';
             for (let i = 0; i < u1; i++) html += '<div class="block-unit draggable" draggable="true" data-type="unit"></div>';
             html += '</div></div>';
 
             html += `<div style="font-size:28px; font-weight:700; margin:8px 0;">${operation === 'addition' ? '+' : '-'}</div>`;
 
-            html += `<div class="vis-section"><div class="vis-label">Second: ${num2}</div><div class="blocks-row">`;
+            html += `<div class="vis-section" onclick="moveGroupToWorkspace(this, ${t2}, ${u2})" style="cursor:pointer;"><div class="vis-label">Second: ${num2} <span style="color:#4A90D9; font-size:11px;">(tap to move)</span></div><div class="blocks-row">`;
             for (let i = 0; i < t2; i++) html += '<div class="block-ten draggable" draggable="true" data-type="ten">10</div>';
             for (let i = 0; i < u2; i++) html += '<div class="block-unit draggable" draggable="true" data-type="unit"></div>';
             html += '</div></div>';
@@ -533,12 +541,12 @@
         } else if (operation === 'multiplication') {
             html += `<div class="vis-section"><div class="vis-label">${num1} × ${num2} = ${num2} groups of ${num1}</div></div>`;
             html += '<div class="groups-grid">';
+            let t = Math.floor(num1/10), u = num1%10;
             for (let g = 0; g < Math.min(num2, 12); g++) {
-                html += `<div class="group-card"><div class="group-label">Group ${g+1}</div><div class="blocks-row">`;
-                let t = Math.floor(num1/10), u = num1%10;
+                html += `<div class="group-card" onclick="moveGroupToWorkspace(this, ${t}, ${u})"><div class="group-label">Group ${g+1}</div><div class="blocks-row">`;
                 for (let i = 0; i < t; i++) html += '<div class="block-ten draggable" draggable="true" data-type="ten">10</div>';
                 for (let i = 0; i < u; i++) html += '<div class="block-unit draggable" draggable="true" data-type="unit"></div>';
-                html += '</div></div>';
+                html += '</div><div class="move-group-btn">tap to move group ↓</div></div>';
             }
             if (num2 > 12) html += `<div class="group-card"><div class="group-label">+${num2-12} more</div></div>`;
             html += '</div>';
@@ -556,12 +564,12 @@
 
             html += `<div style="font-size:16px; margin:8px 0; color:#4A90D9; font-weight:600;">Split into groups of ${num2}:</div>`;
             html += '<div class="groups-grid">';
+            let td = Math.floor(num2/10), ud = num2%10;
             for (let g = 0; g < Math.min(answer, 12); g++) {
-                html += `<div class="group-card"><div class="group-label">Group ${g+1}</div><div class="blocks-row">`;
-                let t = Math.floor(num2/10), u = num2%10;
-                for (let i = 0; i < t; i++) html += '<div class="block-ten draggable" draggable="true" data-type="ten">10</div>';
-                for (let i = 0; i < u; i++) html += '<div class="block-unit draggable" draggable="true" data-type="unit"></div>';
-                html += '</div></div>';
+                html += `<div class="group-card" onclick="moveGroupToWorkspace(this, ${td}, ${ud})"><div class="group-label">Group ${g+1}</div><div class="blocks-row">`;
+                for (let i = 0; i < td; i++) html += '<div class="block-ten draggable" draggable="true" data-type="ten">10</div>';
+                for (let i = 0; i < ud; i++) html += '<div class="block-unit draggable" draggable="true" data-type="unit"></div>';
+                html += '</div><div class="move-group-btn">tap to move group ↓</div></div>';
             }
             if (answer > 12) html += `<div class="group-card"><div class="group-label">+${answer-12} more</div></div>`;
             html += '</div>';
@@ -625,6 +633,42 @@
     function clearWorkspaceArea() {
         const area = document.getElementById('workspace-area');
         area.innerHTML = '<span class="workspace-hint" id="workspace-hint">Drag blocks here to work out your answer</span>';
+    }
+
+    function moveGroupToWorkspace(groupEl, tens, units) {
+        const workspace = document.getElementById('workspace-area');
+
+        // Remove hint text
+        const hint = workspace.querySelector('.workspace-hint');
+        if (hint) hint.remove();
+
+        // Add all blocks from this group to workspace
+        for (let i = 0; i < tens; i++) {
+            const block = document.createElement('div');
+            block.className = 'block-ten draggable';
+            block.draggable = true;
+            block.dataset.type = 'ten';
+            block.textContent = '10';
+            workspace.appendChild(block);
+            workspaceTens++;
+        }
+        for (let i = 0; i < units; i++) {
+            const block = document.createElement('div');
+            block.className = 'block-unit draggable';
+            block.draggable = true;
+            block.dataset.type = 'unit';
+            workspace.appendChild(block);
+            workspaceUnits++;
+        }
+
+        // Remove the group card from visualizer
+        groupEl.remove();
+
+        updateWorkspaceControls();
+        initDragAndDrop();
+
+        workspaceCalculated = false;
+        document.getElementById('ws-total').classList.remove('visible');
     }
 
     function calculateWorkspace() {
@@ -838,7 +882,7 @@
         musicEl = document.createElement('audio');
         musicEl.src = 'music.mp3';
         musicEl.loop = true;
-        musicEl.volume = 0.3;
+        musicEl.volume = 0.15;
     }
 
     function startMusic() {
@@ -866,11 +910,13 @@
 
     function startApp() {
         startMusic();
+        // Preload voices for speech
+        speechSynthesis.getVoices();
         showScreen('menu');
     }
 
     // Play a gentle chime on correct answer
-    function playCorrectChime() {
+    function playCorrectChime(spokenText) {
         let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         let masterGain = audioCtx.createGain();
         masterGain.gain.value = 0.25;
@@ -899,11 +945,49 @@
             osc2.start();
             osc2.stop(audioCtx.currentTime + 0.6);
         }, 200);
+
+        // Say the encouragement phrase after chime finishes (strip emoji)
+        setTimeout(() => {
+            const cleanText = spokenText.replace(/[\u{1F000}-\u{1FFFF}]|[\u{2600}-\u{27FF}]|[\u{FE00}-\u{FEFF}]|[\u{1F900}-\u{1F9FF}]|[⭐🎉🌟👏🏆🚀🥇💪💙🌈🌻🦋]/gu, '').trim();
+            const utterance = new SpeechSynthesisUtterance(cleanText);
+            utterance.rate = 0.9;
+            utterance.pitch = 1.5;
+            utterance.volume = 0.4;
+            // Pick the softest, most kid-friendly voice available
+            const voices = speechSynthesis.getVoices();
+            const voicePrefs = [
+                'Samantha',     // iPad/Mac - soft female
+                'Sandy',        // iPad - younger sounding
+                'Fiona',        // iPad - gentle
+                'Karen',        // iPad - Australian, warm
+                'Moira',        // iPad - Irish, gentle
+                'Tessa',        // iPad - South African, soft
+                'Google US English Female',
+                'Google UK English Female',
+                'Microsoft Zira',  // Windows - soft female
+                'Female',       // Generic fallback
+                'en-US',        // Android fallback
+            ];
+            let chosen = null;
+            for (const pref of voicePrefs) {
+                chosen = voices.find(v => v.name.includes(pref));
+                if (chosen) break;
+            }
+            // Fallback: pick any English female-sounding voice
+            if (!chosen) {
+                chosen = voices.find(v => v.lang.startsWith('en') && v.name.toLowerCase().includes('female'));
+            }
+            if (!chosen) {
+                chosen = voices.find(v => v.lang.startsWith('en'));
+            }
+            if (chosen) utterance.voice = chosen;
+            speechSynthesis.speak(utterance);
+        }, 1000);
     }
 
     // ─── CONFETTI ────────────────────────────────────────────────────────
-    function triggerConfetti() {
-        playCorrectChime();
+    function triggerConfetti(spokenText) {
+        playCorrectChime(spokenText);
         const colors = ['#FFD700', '#6BCB77', '#4A90D9', '#9B59B6', '#F5A623', '#FF69B4'];
         for (let i = 0; i < 40; i++) {
             const piece = document.createElement('div');
