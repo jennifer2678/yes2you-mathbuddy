@@ -18,16 +18,15 @@
             user-select: none;
             -webkit-user-select: none;
         }
-        .screen { display: none; flex-direction: column; align-items: center; padding: 30px 20px; min-height: 100vh; }
+        .screen { display: none; flex-direction: column; align-items: center; padding: 8px 10px; min-height: 100vh; }
         .screen.active { display: flex; }
 
-        /* Buttons */
         .btn {
-            border: none; border-radius: 16px; padding: 20px 36px;
-            font-size: 22px; font-weight: 700; color: white;
+            border: none; border-radius: 14px; padding: 14px 24px;
+            font-size: 18px; font-weight: 700; color: white;
             cursor: pointer; transition: transform 0.1s, box-shadow 0.1s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            min-width: 140px; text-align: center;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            min-width: 120px; text-align: center;
         }
         .btn:active { transform: scale(0.95); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
         .btn-primary { background: #4A90D9; }
@@ -37,16 +36,14 @@
         .btn-incorrect { background: #FF6B6B; }
         .btn-purple { background: #9B59B6; }
         .btn-gray { background: #7F8C8D; }
-        .btn-small { padding: 14px 20px; font-size: 18px; min-width: 100px; }
+        .btn-small { padding: 8px 12px; font-size: 14px; min-width: 70px; }
 
-        /* Home Screen */
-        .home-title { font-size: 52px; color: #4A90D9; margin-top: 80px; }
+        .home-title { font-size: 52px; color: #4A90D9; margin-top: 40px; }
         .home-subtitle { font-size: 36px; color: #4A90D9; margin-top: 10px; }
-        .home-msg { font-size: 22px; color: #2C3E50; margin-top: 30px; }
-        .home-footer { font-size: 16px; color: #7F8C8D; margin-top: auto; padding-bottom: 40px; }
+        .home-msg { font-size: 22px; color: #2C3E50; margin-top: 20px; }
+        .home-footer { font-size: 16px; color: #7F8C8D; margin-top: 30px; padding-bottom: 10px; }
         .stars { font-size: 42px; color: #FFD700; }
 
-        /* Menu Screen */
         .menu-title { font-size: 30px; font-weight: 700; margin-top: 30px; margin-bottom: 20px; }
         .menu-label { font-size: 18px; color: #7F8C8D; margin: 15px 0 10px; align-self: flex-start; padding-left: 10px; }
         .op-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; max-width: 500px; }
@@ -54,74 +51,100 @@
         .btn.selected { outline: 4px solid #FFD700; outline-offset: 3px; }
         .selection-text { font-size: 18px; color: #F5A623; margin: 20px 0; min-height: 24px; }
 
-        /* Practice Screen */
-        .practice-top { display: flex; justify-content: space-between; width: 100%; align-items: center; margin-bottom: 10px; }
-        .score { font-size: 22px; color: #4A90D9; font-weight: 700; }
+        .practice-top { display: flex; justify-content: space-between; width: 100%; align-items: center; margin-bottom: 2px; }
+        .score { font-size: 18px; color: #4A90D9; font-weight: 700; }
         .problem-card {
-            background: white; border-radius: 20px; padding: 30px 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 2px solid #4A90D9;
-            margin: 15px 0; width: 100%; max-width: 500px; text-align: center;
+            background: white; border-radius: 14px; padding: 10px 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08); border: 2px solid #4A90D9;
+            margin: 4px 0; width: 100%; max-width: 500px; text-align: center;
         }
-        .problem-text { font-size: 44px; font-weight: 700; color: #2C3E50; }
-        .answer-row { display: flex; gap: 12px; width: 100%; max-width: 500px; margin: 15px 0; }
+        .problem-text { font-size: 32px; font-weight: 700; color: #2C3E50; }
+        .problem-vertical {
+            display: inline-flex; flex-direction: column; align-items: flex-end;
+            font-size: 32px; font-weight: 700; color: #2C3E50;
+        }
+        .problem-vertical .pv-row { display: flex; align-items: center; gap: 8px; }
+        .problem-vertical .pv-symbol { align-self: flex-end; margin-right: 4px; }
+        .problem-vertical .pv-line { width: 100%; height: 3px; background: #2C3E50; border-radius: 2px; margin: 3px 0; }
+        .problem-vertical .pv-answer { text-align: right; color: #7F8C8D; }
+        .answer-row { display: flex; flex-direction: row; gap: 8px; width: 100%; max-width: 500px; margin: 5px 0; align-items: center; justify-content: center; }
         .answer-input {
-            flex: 1; font-size: 32px; padding: 16px 20px; border-radius: 14px;
+            width: 5em; font-size: 24px; padding: 8px 10px; border-radius: 12px;
             border: 2px solid #4A90D9; text-align: center; background: white;
             outline: none; -webkit-appearance: none;
         }
         .answer-input:focus { border-color: #4A90D9; box-shadow: 0 0 0 3px rgba(74,144,217,0.2); }
-        .feedback { font-size: 20px; min-height: 60px; text-align: center; padding: 10px; line-height: 1.4; max-width: 500px; }
+        .feedback { font-size: 16px; min-height: 22px; text-align: center; padding: 2px; line-height: 1.3; max-width: 500px; }
         .feedback.correct { color: #6BCB77; }
         .feedback.incorrect { color: #FF6B6B; }
-        .tools-row { display: flex; gap: 10px; margin: 10px 0; flex-wrap: wrap; justify-content: center; }
+        .tools-row { display: flex; gap: 6px; margin: 4px 0; flex-wrap: wrap; justify-content: center; }
 
-        /* Hint Panel */
         .hint-panel {
-            background: #FFFAED; border-radius: 14px; padding: 18px;
-            width: 100%; max-width: 500px; margin: 10px 0;
+            background: #FFFAED; border-radius: 12px; padding: 12px;
+            width: 100%; max-width: 500px; margin: 6px 0;
             border: 1px solid #F5A623; display: none;
         }
         .hint-panel.visible { display: block; }
-        .hint-line { font-size: 18px; margin: 6px 0; color: #2C3E50; }
+        .hint-line { font-size: 16px; margin: 4px 0; color: #2C3E50; }
 
         /* Block Visualizer */
         .visualizer {
-            background: white; border-radius: 16px; padding: 20px;
-            width: 100%; max-width: 500px; margin: 10px 0;
+            background: white; border-radius: 12px; padding: 10px;
+            width: 100%; max-width: 500px; margin: 4px 0;
             border: 2px solid #4A90D9; display: none;
         }
         .visualizer.visible { display: block; }
-        .vis-title { font-size: 20px; color: #4A90D9; font-weight: 700; margin-bottom: 12px; }
-        .vis-section { margin: 8px 0; }
-        .vis-label { font-size: 16px; color: #2C3E50; margin-bottom: 6px; }
+        .vis-title { font-size: 16px; color: #4A90D9; font-weight: 700; margin-bottom: 5px; }
+        .vis-section { margin: 3px 0; }
+        .vis-label { font-size: 13px; color: #2C3E50; margin-bottom: 3px; }
         .blocks-row { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+        .groups-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin: 4px 0; }
+        .group-card {
+            background: #F0F4F8; border-radius: 6px; padding: 4px;
+            border: 1px solid #ddd; text-align: center;
+        }
+        .group-card .group-label { font-size: 10px; color: #7F8C8D; margin-bottom: 2px; }
+        .group-card .blocks-row { justify-content: center; }
         .block-ten {
-            width: 36px; height: 36px; background: #4A90D9; border-radius: 6px;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 12px; font-weight: 700; border: 2px solid #2C3E50;
+            width: 36px; height: 36px; background: #4A90D9; border-radius: 5px;
+            display: inline-flex; align-items: center; justify-content: center;
+            color: white; font-size: 11px; font-weight: 700; border: 2px solid #2C3E50;
+            cursor: grab; touch-action: none;
         }
+        .block-ten.dragging { opacity: 0.5; cursor: grabbing; }
         .block-unit {
-            width: 26px; height: 26px; background: #7BC67E; border-radius: 4px;
-            border: 2px solid #2C3E50;
+            width: 36px; height: 36px; background: #7BC67E; border-radius: 4px;
+            border: 2px solid #2C3E50; display: inline-block;
+            cursor: grab; touch-action: none;
         }
-        .vis-separator { border-top: 1px solid #ccc; margin: 12px 0; }
-        .vis-carry { color: #F5A623; font-size: 16px; font-weight: 600; margin: 8px 0; }
-        .workspace-row { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
+        .block-unit.dragging { opacity: 0.5; cursor: grabbing; }
+        .vis-separator { border-top: 1px solid #ccc; margin: 5px 0; }
+        .vis-carry { color: #F5A623; font-size: 13px; font-weight: 600; margin: 3px 0; }
+
+        /* Workspace */
+        .workspace-area {
+            min-height: 50px; background: #FAFBFC; border: 2px dashed #4A90D9;
+            border-radius: 8px; padding: 8px; margin: 4px 0;
+            display: flex; flex-wrap: wrap; gap: 4px; align-items: center;
+            position: relative;
+        }
+        .workspace-area.drag-over { background: #E8F4FD; border-color: #2980B9; }
+        .workspace-hint { color: #7F8C8D; font-size: 12px; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
+        .workspace-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
         .ws-btn {
-            width: 48px; height: 48px; border-radius: 12px; border: none;
-            font-size: 28px; font-weight: 700; color: white; cursor: pointer;
+            width: 36px; height: 36px; border-radius: 8px; border: none;
+            font-size: 22px; font-weight: 700; color: white; cursor: pointer;
         }
         .ws-btn-minus { background: #FF6B6B; }
         .ws-btn-plus { background: #6BCB77; }
-        .ws-label { font-size: 20px; font-weight: 600; min-width: 100px; }
-        .ws-total { font-size: 22px; color: #F5A623; font-weight: 700; margin: 10px 0; }
+        .ws-label { font-size: 16px; font-weight: 600; min-width: 80px; }
+        .ws-total { font-size: 18px; color: #F5A623; font-weight: 700; margin: 4px 0; display: none; }
+        .ws-total.visible { display: block; }
 
-        /* Confetti */
         .confetti-piece {
             position: fixed; width: 12px; height: 12px;
             pointer-events: none; z-index: 9999;
         }
-
         @keyframes confetti-fall {
             0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
             100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
@@ -136,8 +159,8 @@
         <div class="home-title">YES 2 YOU</div>
         <div class="home-subtitle">MATH BUDDY</div>
         <div class="home-msg">Let's have fun with math!</div>
-        <div style="margin-top: 60px;">
-            <button class="btn btn-primary" onclick="showScreen('menu')" style="font-size: 28px; padding: 24px 50px;">Start Learning!</button>
+        <div style="margin-top: 30px;">
+            <button class="btn btn-primary" onclick="startApp()" style="font-size: 28px; padding: 24px 50px;">Start Learning!</button>
         </div>
         <div class="home-footer">Take your time. You're doing great! &#128153;</div>
     </div>
@@ -167,6 +190,7 @@
     <div id="practice-screen" class="screen">
         <div class="practice-top">
             <button class="btn btn-gray btn-small" onclick="goToMenu()">Menu</button>
+            <button class="btn btn-small" id="music-btn" onclick="toggleMusic()" style="background:#9B59B6; padding:8px 10px; min-width:40px;">&#127925;</button>
             <div class="score" id="score-display">Score: 0</div>
         </div>
         <div class="problem-card">
@@ -174,7 +198,7 @@
         </div>
         <div class="answer-row">
             <input type="number" class="answer-input" id="answer-input" placeholder="?" inputmode="numeric" pattern="[0-9]*">
-            <button class="btn btn-primary" onclick="checkAnswer()">Check</button>
+            <button class="btn btn-primary" onclick="checkAnswer()" style="padding:10px 14px; font-size:16px; min-width:70px;">Check</button>
         </div>
         <div class="feedback" id="feedback"></div>
         <div class="tools-row">
@@ -187,7 +211,10 @@
             <div class="vis-title">Block Visualizer</div>
             <div id="vis-content"></div>
             <div class="vis-separator"></div>
-            <div style="font-size:16px; color:#4A90D9; font-weight:600; margin-bottom:8px;">Your Workspace</div>
+            <div style="font-size:16px; color:#4A90D9; font-weight:600; margin-bottom:8px;">Your Workspace - drag blocks here or use +/-</div>
+            <div class="workspace-area" id="workspace-area">
+                <span class="workspace-hint" id="workspace-hint">Drag blocks here to work out your answer</span>
+            </div>
             <div class="workspace-row">
                 <button class="ws-btn ws-btn-minus" onclick="adjustWorkspace('tens', -1)">-</button>
                 <span class="ws-label" id="ws-tens">Tens: 0</span>
@@ -198,13 +225,15 @@
                 <span class="ws-label" id="ws-units">Units: 0</span>
                 <button class="ws-btn ws-btn-plus" onclick="adjustWorkspace('units', 1)">+</button>
             </div>
-            <div class="ws-total" id="ws-total">Workspace answer: 0</div>
-            <button class="btn btn-primary btn-small" onclick="useWorkspaceAnswer()" style="width:100%;">&#128221; Use My Workspace Answer</button>
+            <div style="display:flex; gap:10px; margin-top:12px;">
+                <button class="btn btn-accent btn-small" onclick="calculateWorkspace()" style="flex:1;">&#129518; Calculate My Answer</button>
+                <button class="btn btn-primary btn-small" onclick="useWorkspaceAnswer()" style="flex:1;">&#128221; Use Answer</button>
+            </div>
+            <div class="ws-total" id="ws-total">Your answer: 0</div>
         </div>
     </div>
 
     <script>
-
     // ─── GAME STATE ──────────────────────────────────────────────────────
     let operation = null;
     let difficulty = null;
@@ -213,6 +242,7 @@
     let hintLevel = 0;
     let blocksVisible = false;
     let workspaceTens = 0, workspaceUnits = 0;
+    let workspaceCalculated = false;
 
     const ENCOURAGEMENTS = [
         "Amazing job! You're a math star! ⭐",
@@ -239,7 +269,6 @@
         document.getElementById(name + '-screen').classList.add('active');
     }
 
-    // ─── MENU ────────────────────────────────────────────────────────────
     function selectOp(op) {
         operation = op;
         document.querySelectorAll('.op-grid .btn').forEach(b => b.classList.remove('selected'));
@@ -288,10 +317,12 @@
     // ─── PROBLEM GENERATION ──────────────────────────────────────────────
     function generateProblem() {
         hintLevel = 0;
+        workspaceCalculated = false;
         document.getElementById('hint-panel').classList.remove('visible');
         document.getElementById('feedback').textContent = '';
         document.getElementById('feedback').className = 'feedback';
         document.getElementById('answer-input').value = '';
+        document.getElementById('ws-total').classList.remove('visible');
 
         let maxNum = difficulty === 'easy' ? 10 : (difficulty === 'medium' ? 20 : 50);
 
@@ -317,11 +348,28 @@
         }
 
         const symbols = { addition: '+', subtraction: '-', multiplication: '×', division: '÷' };
-        document.getElementById('problem-text').textContent = `${num1}  ${symbols[operation]}  ${num2}  =  ?`;
+        const problemEl = document.getElementById('problem-text');
+        if (operation === 'multiplication' || operation === 'division') {
+            problemEl.innerHTML = `
+                <div class="problem-vertical">
+                    <div style="text-align:right;">${num1}</div>
+                    <div class="pv-row"><span class="pv-symbol">${symbols[operation]}</span><span>${num2}</span></div>
+                    <div class="pv-line"></div>
+                    <div class="pv-answer">?</div>
+                </div>`;
+        } else {
+            problemEl.textContent = `${num1}  ${symbols[operation]}  ${num2}  =  ?`;
+        }
 
-        if (blocksVisible && (operation === 'addition' || operation === 'subtraction')) {
+        if (blocksVisible) {
             setupVisualizer();
         }
+
+        // Reset workspace
+        workspaceTens = 0;
+        workspaceUnits = 0;
+        updateWorkspaceControls();
+        clearWorkspaceArea();
 
         document.getElementById('answer-input').focus();
     }
@@ -334,15 +382,9 @@
     function checkAnswer() {
         const input = document.getElementById('answer-input');
         const val = input.value.trim();
-        if (!val) {
-            showFeedback("Type a number first! 😊", false);
-            return;
-        }
+        if (!val) { showFeedback("Type a number first! 😊", false); return; }
         const userAnswer = parseInt(val);
-        if (isNaN(userAnswer)) {
-            showFeedback("Please type a number! 🔢", false);
-            return;
-        }
+        if (isNaN(userAnswer)) { showFeedback("Please type a number! 🔢", false); return; }
 
         if (userAnswer === correctAnswer) {
             score++;
@@ -365,7 +407,6 @@
 
     function skipProblem() { generateProblem(); }
 
-    // Handle Enter key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && document.getElementById('practice-screen').classList.contains('active')) {
             checkAnswer();
@@ -390,51 +431,28 @@
     }
 
     function additionHints() {
-        let t1 = Math.floor(num1/10), u1 = num1%10;
-        let t2 = Math.floor(num2/10), u2 = num2%10;
+        let t1 = Math.floor(num1/10), u1 = num1%10, t2 = Math.floor(num2/10), u2 = num2%10;
         let totalU = u1 + u2, carry = totalU >= 10;
-
-        if (hintLevel === 1) return [
-            "Let's break this down!",
-            `${num1} = ${t1} tens and ${u1} units`,
-            `${num2} = ${t2} tens and ${u2} units`,
-            "First, add the units together."
-        ];
+        if (hintLevel === 1) return ["Let's break this down!", `${num1} = ${t1} tens and ${u1} units`, `${num2} = ${t2} tens and ${u2} units`, "First, add the units together."];
         if (hintLevel === 2) {
             let lines = [`Units: ${u1} + ${u2} = ${totalU}`];
             if (carry) { lines.push(`${totalU} is 10 or more! Carry 1 ten, keep ${totalU-10} units.`); }
             else { lines.push(`${totalU} units stays as units.`); }
-            lines.push("Now add the tens.");
-            return lines;
+            lines.push("Now add the tens."); return lines;
         }
-        let totalT = t1 + t2 + (carry ? 1 : 0);
-        let remU = carry ? totalU - 10 : totalU;
-        return [
-            `Tens: ${t1} + ${t2}${carry ? ' + 1 (carried)' : ''} = ${totalT}`,
-            `Answer: ${totalT} tens + ${remU} units = ${num1+num2} ⭐`
-        ];
+        let totalT = t1 + t2 + (carry ? 1 : 0), remU = carry ? totalU - 10 : totalU;
+        return [`Tens: ${t1} + ${t2}${carry ? ' + 1 (carried)' : ''} = ${totalT}`, `Answer: ${totalT} tens + ${remU} units = ${num1+num2} ⭐`];
     }
 
     function subtractionHints() {
-        let t1 = Math.floor(num1/10), u1 = num1%10;
-        let t2 = Math.floor(num2/10), u2 = num2%10;
+        let t1 = Math.floor(num1/10), u1 = num1%10, t2 = Math.floor(num2/10), u2 = num2%10;
         let borrow = u1 < u2;
-
         if (hintLevel === 1) {
-            let lines = [
-                "Let's break this down!",
-                `${num1} = ${t1} tens and ${u1} units`,
-                `${num2} = ${t2} tens and ${u2} units`,
-                "First, subtract the units."
-            ];
-            if (borrow) lines.push(`Hmm, ${u1} < ${u2}... We need to borrow!`);
-            return lines;
+            let lines = ["Let's break this down!", `${num1} = ${t1} tens and ${u1} units`, `${num2} = ${t2} tens and ${u2} units`, "First, subtract the units."];
+            if (borrow) lines.push(`Hmm, ${u1} < ${u2}... We need to borrow!`); return lines;
         }
         if (hintLevel === 2) {
-            if (borrow) {
-                let newU = u1 + 10, newT = t1 - 1;
-                return [`Borrow 1 ten from ${t1} tens.`, `Now: ${newT} tens and ${newU} units`, `Units: ${newU} - ${u2} = ${newU-u2}`];
-            }
+            if (borrow) { let newU = u1+10, newT = t1-1; return [`Borrow 1 ten from ${t1} tens.`, `Now: ${newT} tens and ${newU} units`, `Units: ${newU} - ${u2} = ${newU-u2}`]; }
             return [`Units: ${u1} - ${u2} = ${u1-u2}`, "No borrowing needed!"];
         }
         let ans = num1 - num2;
@@ -444,17 +462,12 @@
     function multiplicationHints() {
         if (hintLevel === 1) {
             let lines = ["Multiplication = repeated addition!", `${num1} × ${num2} means: add ${num1} to itself ${num2} times.`];
-            if (num2 <= 5) lines.push(Array(num2).fill(num1).join(' + '));
-            return lines;
+            if (num2 <= 5) lines.push(Array(num2).fill(num1).join(' + ')); return lines;
         }
         if (hintLevel === 2) {
-            if (num2 > 5) {
-                let p1 = Math.floor(num2/2), p2 = num2 - p1;
-                return ["Split it up!", `(${num1} × ${p1}) + (${num1} × ${p2})`, `= ${num1*p1} + ${num1*p2}`];
-            }
+            if (num2 > 5) { let p1 = Math.floor(num2/2), p2 = num2-p1; return ["Split it up!", `(${num1} × ${p1}) + (${num1} × ${p2})`, `= ${num1*p1} + ${num1*p2}`]; }
             let lines = ["Count up:"], r = 0;
-            for (let i = 1; i <= num2; i++) { r += num1; lines.push(`${num1} × ${i} = ${r}`); }
-            return lines;
+            for (let i = 1; i <= num2; i++) { r += num1; lines.push(`${num1} × ${i} = ${r}`); } return lines;
         }
         return [`${num1} × ${num2} = ${num1*num2}! That's ${num2} groups of ${num1}. ⭐`];
     }
@@ -465,18 +478,13 @@
         if (hintLevel === 2) {
             let lines = [`Counting by ${num2}s:`];
             for (let i = 1; i <= Math.min(ans, 6); i++) lines.push(`${num2} × ${i} = ${num2*i}`);
-            if (ans > 6) lines.push(`... ${num2} × ${ans} = ${num2*ans}`);
-            return lines;
+            if (ans > 6) lines.push(`... ${num2} × ${ans} = ${num2*ans}`); return lines;
         }
         return [`${num1} ÷ ${num2} = ${ans}`, `Because ${num2} × ${ans} = ${num1} exactly! ⭐`];
     }
 
     // ─── BLOCK VISUALIZER ────────────────────────────────────────────────
     function toggleBlocks() {
-        if (operation !== 'addition' && operation !== 'subtraction') {
-            showFeedback("Blocks work with + and - only!", false);
-            return;
-        }
         blocksVisible = !blocksVisible;
         const btn = document.getElementById('blocks-btn');
         const vis = document.getElementById('visualizer');
@@ -491,40 +499,80 @@
     }
 
     function setupVisualizer() {
-        let result = operation === 'addition' ? num1 + num2 : num1 - num2;
-        workspaceTens = Math.floor(result / 10);
-        workspaceUnits = result % 10;
-
-        let t1 = Math.floor(num1/10), u1 = num1%10;
-        let t2 = Math.floor(num2/10), u2 = num2%10;
+        workspaceTens = 0;
+        workspaceUnits = 0;
+        workspaceCalculated = false;
+        document.getElementById('ws-total').classList.remove('visible');
+        updateWorkspaceControls();
+        clearWorkspaceArea();
 
         let html = '';
-        // First number
-        html += `<div class="vis-section"><div class="vis-label">First: ${num1}</div><div class="blocks-row">`;
-        for (let i = 0; i < t1; i++) html += '<div class="block-ten">10</div>';
-        for (let i = 0; i < u1; i++) html += '<div class="block-unit"></div>';
-        html += '</div></div>';
 
-        // Symbol
-        html += `<div style="font-size:28px; font-weight:700; margin:8px 0;">${operation === 'addition' ? '+' : '-'}</div>`;
+        if (operation === 'addition' || operation === 'subtraction') {
+            let t1 = Math.floor(num1/10), u1 = num1%10;
+            let t2 = Math.floor(num2/10), u2 = num2%10;
 
-        // Second number
-        html += `<div class="vis-section"><div class="vis-label">Second: ${num2}</div><div class="blocks-row">`;
-        for (let i = 0; i < t2; i++) html += '<div class="block-ten">10</div>';
-        for (let i = 0; i < u2; i++) html += '<div class="block-unit"></div>';
-        html += '</div></div>';
+            html += `<div class="vis-section"><div class="vis-label">First: ${num1}</div><div class="blocks-row">`;
+            for (let i = 0; i < t1; i++) html += '<div class="block-ten draggable" draggable="true" data-type="ten">10</div>';
+            for (let i = 0; i < u1; i++) html += '<div class="block-unit draggable" draggable="true" data-type="unit"></div>';
+            html += '</div></div>';
 
-        // Carry/borrow indicator
-        if (operation === 'addition' && (u1 + u2) >= 10) {
-            html += '<div class="vis-carry">⚡ Carrying! 10 units → 1 ten</div>';
-        } else if (operation === 'subtraction' && u1 < u2) {
-            html += '<div class="vis-carry">⚡ Regrouping! Borrow 1 ten → 10 units</div>';
+            html += `<div style="font-size:28px; font-weight:700; margin:8px 0;">${operation === 'addition' ? '+' : '-'}</div>`;
+
+            html += `<div class="vis-section"><div class="vis-label">Second: ${num2}</div><div class="blocks-row">`;
+            for (let i = 0; i < t2; i++) html += '<div class="block-ten draggable" draggable="true" data-type="ten">10</div>';
+            for (let i = 0; i < u2; i++) html += '<div class="block-unit draggable" draggable="true" data-type="unit"></div>';
+            html += '</div></div>';
+
+            if (operation === 'addition' && (u1 + u2) >= 10) {
+                html += '<div class="vis-carry">⚡ Carrying! 10 units → 1 ten</div>';
+            } else if (operation === 'subtraction' && u1 < u2) {
+                html += '<div class="vis-carry">⚡ Regrouping! Borrow 1 ten → 10 units</div>';
+            }
+
+        } else if (operation === 'multiplication') {
+            html += `<div class="vis-section"><div class="vis-label">${num1} × ${num2} = ${num2} groups of ${num1}</div></div>`;
+            html += '<div class="groups-grid">';
+            for (let g = 0; g < Math.min(num2, 12); g++) {
+                html += `<div class="group-card"><div class="group-label">Group ${g+1}</div><div class="blocks-row">`;
+                let t = Math.floor(num1/10), u = num1%10;
+                for (let i = 0; i < t; i++) html += '<div class="block-ten draggable" draggable="true" data-type="ten">10</div>';
+                for (let i = 0; i < u; i++) html += '<div class="block-unit draggable" draggable="true" data-type="unit"></div>';
+                html += '</div></div>';
+            }
+            if (num2 > 12) html += `<div class="group-card"><div class="group-label">+${num2-12} more</div></div>`;
+            html += '</div>';
+            html += `<div class="vis-carry">⚡ Total: ${num2} groups × ${num1} = ${num1*num2} blocks</div>`;
+
+        } else if (operation === 'division') {
+            let answer = Math.floor(num1 / num2);
+            html += `<div class="vis-section"><div class="vis-label">${num1} ÷ ${num2} = How many groups of ${num2}?</div></div>`;
+
+            html += `<div class="vis-section"><div class="vis-label">Start with ${num1}:</div><div class="blocks-row">`;
+            let t1 = Math.floor(num1/10), u1 = num1%10;
+            for (let i = 0; i < t1; i++) html += '<div class="block-ten draggable" draggable="true" data-type="ten">10</div>';
+            for (let i = 0; i < u1; i++) html += '<div class="block-unit draggable" draggable="true" data-type="unit"></div>';
+            html += '</div></div>';
+
+            html += `<div style="font-size:16px; margin:8px 0; color:#4A90D9; font-weight:600;">Split into groups of ${num2}:</div>`;
+            html += '<div class="groups-grid">';
+            for (let g = 0; g < Math.min(answer, 12); g++) {
+                html += `<div class="group-card"><div class="group-label">Group ${g+1}</div><div class="blocks-row">`;
+                let t = Math.floor(num2/10), u = num2%10;
+                for (let i = 0; i < t; i++) html += '<div class="block-ten draggable" draggable="true" data-type="ten">10</div>';
+                for (let i = 0; i < u; i++) html += '<div class="block-unit draggable" draggable="true" data-type="unit"></div>';
+                html += '</div></div>';
+            }
+            if (answer > 12) html += `<div class="group-card"><div class="group-label">+${answer-12} more</div></div>`;
+            html += '</div>';
+            html += `<div class="vis-carry">⚡ We made ${answer} equal groups!</div>`;
         }
 
         document.getElementById('vis-content').innerHTML = html;
-        updateWorkspaceDisplay();
+        initDragAndDrop();
     }
 
+    // ─── WORKSPACE ───────────────────────────────────────────────────────
     function adjustWorkspace(type, delta) {
         if (type === 'tens') {
             workspaceTens = Math.max(0, workspaceTens + delta);
@@ -537,21 +585,325 @@
                 workspaceUnits += 9;
             }
         }
-        updateWorkspaceDisplay();
+        updateWorkspaceControls();
+        rebuildWorkspaceBlocks();
+        // Hide total when adjusting - user must click Calculate
+        workspaceCalculated = false;
+        document.getElementById('ws-total').classList.remove('visible');
     }
 
-    function updateWorkspaceDisplay() {
+    function updateWorkspaceControls() {
         document.getElementById('ws-tens').textContent = `Tens: ${workspaceTens}`;
         document.getElementById('ws-units').textContent = `Units: ${workspaceUnits}`;
-        document.getElementById('ws-total').textContent = `Workspace answer: ${workspaceTens * 10 + workspaceUnits}`;
+    }
+
+    function rebuildWorkspaceBlocks() {
+        const area = document.getElementById('workspace-area');
+        area.innerHTML = '';
+        if (workspaceTens === 0 && workspaceUnits === 0) {
+            area.innerHTML = '<span class="workspace-hint" id="workspace-hint">Drag blocks here to work out your answer</span>';
+            return;
+        }
+        for (let i = 0; i < workspaceTens; i++) {
+            const block = document.createElement('div');
+            block.className = 'block-ten draggable';
+            block.draggable = true;
+            block.dataset.type = 'ten';
+            block.textContent = '10';
+            area.appendChild(block);
+        }
+        for (let i = 0; i < workspaceUnits; i++) {
+            const block = document.createElement('div');
+            block.className = 'block-unit draggable';
+            block.draggable = true;
+            block.dataset.type = 'unit';
+            area.appendChild(block);
+        }
+        initDragAndDrop();
+    }
+
+    function clearWorkspaceArea() {
+        const area = document.getElementById('workspace-area');
+        area.innerHTML = '<span class="workspace-hint" id="workspace-hint">Drag blocks here to work out your answer</span>';
+    }
+
+    function calculateWorkspace() {
+        // Count blocks currently in workspace area
+        const area = document.getElementById('workspace-area');
+        const tens = area.querySelectorAll('.block-ten').length;
+        const units = area.querySelectorAll('.block-unit').length;
+        workspaceTens = tens;
+        workspaceUnits = units;
+        updateWorkspaceControls();
+
+        const total = workspaceTens * 10 + workspaceUnits;
+        const totalEl = document.getElementById('ws-total');
+        totalEl.textContent = `Your answer: ${total}`;
+        totalEl.classList.add('visible');
+        workspaceCalculated = true;
     }
 
     function useWorkspaceAnswer() {
-        document.getElementById('answer-input').value = workspaceTens * 10 + workspaceUnits;
+        if (!workspaceCalculated) {
+            calculateWorkspace();
+        }
+        const total = workspaceTens * 10 + workspaceUnits;
+        document.getElementById('answer-input').value = total;
+    }
+
+    // ─── DRAG AND DROP ───────────────────────────────────────────────────
+    let draggedEl = null;
+
+    function initDragAndDrop() {
+        // Desktop drag events
+        document.querySelectorAll('.draggable').forEach(block => {
+            block.addEventListener('dragstart', handleDragStart);
+            block.addEventListener('dragend', handleDragEnd);
+        });
+
+        const workspace = document.getElementById('workspace-area');
+        workspace.addEventListener('dragover', handleDragOver);
+        workspace.addEventListener('dragleave', handleDragLeave);
+        workspace.addEventListener('drop', handleDrop);
+
+        // Touch events for mobile/iPad
+        document.querySelectorAll('.draggable').forEach(block => {
+            block.addEventListener('touchstart', handleTouchStart, { passive: false });
+            block.addEventListener('touchmove', handleTouchMove, { passive: false });
+            block.addEventListener('touchend', handleTouchEnd, { passive: false });
+        });
+    }
+
+    function handleDragStart(e) {
+        draggedEl = e.target;
+        e.target.classList.add('dragging');
+        e.dataTransfer.setData('text/plain', e.target.dataset.type);
+    }
+
+    function handleDragEnd(e) {
+        e.target.classList.remove('dragging');
+        draggedEl = null;
+    }
+
+    function handleDragOver(e) {
+        e.preventDefault();
+        e.currentTarget.classList.add('drag-over');
+    }
+
+    function handleDragLeave(e) {
+        e.currentTarget.classList.remove('drag-over');
+    }
+
+    function handleDrop(e) {
+        e.preventDefault();
+        e.currentTarget.classList.remove('drag-over');
+        const workspace = document.getElementById('workspace-area');
+
+        // Remove hint text
+        const hint = workspace.querySelector('.workspace-hint');
+        if (hint) hint.remove();
+
+        // Remove the original block from its source
+        if (draggedEl && draggedEl.parentNode) {
+            draggedEl.parentNode.removeChild(draggedEl);
+        }
+
+        // Add block to workspace
+        const type = e.dataTransfer.getData('text/plain');
+        const newBlock = document.createElement('div');
+        newBlock.className = type === 'ten' ? 'block-ten draggable' : 'block-unit draggable';
+        newBlock.draggable = true;
+        newBlock.dataset.type = type;
+        if (type === 'ten') newBlock.textContent = '10';
+        workspace.appendChild(newBlock);
+
+        // Update counts
+        if (type === 'ten') workspaceTens++;
+        else workspaceUnits++;
+        updateWorkspaceControls();
+
+        // Re-init drag on new blocks
+        initDragAndDrop();
+
+        // Hide calculated total since workspace changed
+        workspaceCalculated = false;
+        document.getElementById('ws-total').classList.remove('visible');
+    }
+
+    // ─── TOUCH DRAG (for iPad/mobile) ────────────────────────────────────
+    let touchClone = null;
+    let touchSource = null;
+    let touchOffsetX = 0, touchOffsetY = 0;
+
+    function handleTouchStart(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        touchSource = e.target;
+        touchSource.classList.add('dragging');
+
+        // Create floating clone
+        touchClone = touchSource.cloneNode(true);
+        touchClone.style.position = 'fixed';
+        touchClone.style.zIndex = '10000';
+        touchClone.style.pointerEvents = 'none';
+        touchClone.style.opacity = '0.8';
+        touchClone.style.transform = 'scale(1.2)';
+
+        const rect = touchSource.getBoundingClientRect();
+        touchOffsetX = touch.clientX - rect.left;
+        touchOffsetY = touch.clientY - rect.top;
+        touchClone.style.left = (touch.clientX - touchOffsetX) + 'px';
+        touchClone.style.top = (touch.clientY - touchOffsetY) + 'px';
+
+        document.body.appendChild(touchClone);
+    }
+
+    function handleTouchMove(e) {
+        e.preventDefault();
+        if (!touchClone) return;
+        const touch = e.touches[0];
+        touchClone.style.left = (touch.clientX - touchOffsetX) + 'px';
+        touchClone.style.top = (touch.clientY - touchOffsetY) + 'px';
+
+        // Highlight workspace if hovering over it
+        const workspace = document.getElementById('workspace-area');
+        const wsRect = workspace.getBoundingClientRect();
+        if (touch.clientX >= wsRect.left && touch.clientX <= wsRect.right &&
+            touch.clientY >= wsRect.top && touch.clientY <= wsRect.bottom) {
+            workspace.classList.add('drag-over');
+        } else {
+            workspace.classList.remove('drag-over');
+        }
+    }
+
+    function handleTouchEnd(e) {
+        e.preventDefault();
+        if (!touchClone || !touchSource) return;
+
+        touchSource.classList.remove('dragging');
+
+        const workspace = document.getElementById('workspace-area');
+        const wsRect = workspace.getBoundingClientRect();
+
+        // Get last touch position
+        const touch = e.changedTouches[0];
+        const droppedInWorkspace = touch.clientX >= wsRect.left && touch.clientX <= wsRect.right &&
+                                   touch.clientY >= wsRect.top && touch.clientY <= wsRect.bottom;
+
+        if (droppedInWorkspace) {
+            // Remove hint
+            const hint = workspace.querySelector('.workspace-hint');
+            if (hint) hint.remove();
+
+            // Remove original block from its source
+            if (touchSource && touchSource.parentNode) {
+                touchSource.parentNode.removeChild(touchSource);
+            }
+
+            // Add block to workspace
+            const type = touchSource.dataset.type;
+            const newBlock = document.createElement('div');
+            newBlock.className = type === 'ten' ? 'block-ten draggable' : 'block-unit draggable';
+            newBlock.draggable = true;
+            newBlock.dataset.type = type;
+            if (type === 'ten') newBlock.textContent = '10';
+            workspace.appendChild(newBlock);
+
+            if (type === 'ten') workspaceTens++;
+            else workspaceUnits++;
+            updateWorkspaceControls();
+
+            initDragAndDrop();
+
+            workspaceCalculated = false;
+            document.getElementById('ws-total').classList.remove('visible');
+        }
+
+        workspace.classList.remove('drag-over');
+
+        // Remove clone
+        if (touchClone && touchClone.parentNode) {
+            touchClone.parentNode.removeChild(touchClone);
+        }
+        touchClone = null;
+        touchSource = null;
+    }
+
+    // ─── AMBIENT MUSIC ENGINE ───────────────────────────────────────────
+    let musicPlaying = false;
+    let musicEl = null;
+
+    function initAudio() {
+        if (musicEl) return;
+        musicEl = document.createElement('audio');
+        musicEl.src = 'music.mp3';
+        musicEl.loop = true;
+        musicEl.volume = 0.3;
+    }
+
+    function startMusic() {
+        if (musicPlaying) return;
+        initAudio();
+        musicEl.play().catch(() => {}); // Ignore autoplay errors
+        musicPlaying = true;
+    }
+
+    function stopMusic() {
+        if (!musicEl) return;
+        musicEl.pause();
+        musicPlaying = false;
+    }
+
+    function toggleMusic() {
+        if (musicPlaying) {
+            stopMusic();
+            document.getElementById('music-btn').style.opacity = '0.5';
+        } else {
+            startMusic();
+            document.getElementById('music-btn').style.opacity = '1';
+        }
+    }
+
+    function startApp() {
+        startMusic();
+        showScreen('menu');
+    }
+
+    // Play a gentle chime on correct answer
+    function playCorrectChime() {
+        let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let masterGain = audioCtx.createGain();
+        masterGain.gain.value = 0.25;
+        masterGain.connect(audioCtx.destination);
+
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = 523.25;
+        gain.gain.value = 0.2;
+        gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.8);
+        osc.connect(gain);
+        gain.connect(masterGain);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.8);
+
+        setTimeout(() => {
+            const osc2 = audioCtx.createOscillator();
+            const gain2 = audioCtx.createGain();
+            osc2.type = 'sine';
+            osc2.frequency.value = 659.25;
+            gain2.gain.value = 0.15;
+            gain2.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.6);
+            osc2.connect(gain2);
+            gain2.connect(masterGain);
+            osc2.start();
+            osc2.stop(audioCtx.currentTime + 0.6);
+        }, 200);
     }
 
     // ─── CONFETTI ────────────────────────────────────────────────────────
     function triggerConfetti() {
+        playCorrectChime();
         const colors = ['#FFD700', '#6BCB77', '#4A90D9', '#9B59B6', '#F5A623', '#FF69B4'];
         for (let i = 0; i < 40; i++) {
             const piece = document.createElement('div');
